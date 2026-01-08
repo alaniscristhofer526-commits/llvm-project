@@ -7529,6 +7529,14 @@ DenseMap<const SCEV *, Value *> LoopVectorizationPlanner::executePlan(
   std::optional<unsigned> OrigAverageTripCount =
       getLoopEstimatedTripCount(OrigLoop, &OrigLoopInvocationWeight);
 
+  // Try to get the trip count if it's available statically. If so, set the
+  // invocation weight, too. Setting to 1 should be sufficient to generate
+  // correct branch weights.
+  if (!OrigLoopInvocationWeight)
+    if (auto TC = SE.getSmallConstantTripCount(OrigLoop))
+      if ((OrigAverageTripCount = TC))
+        OrigLoopInvocationWeight = 1;
+
   BestVPlan.execute(&State);
 
   // 2.6. Maintain Loop Hints
