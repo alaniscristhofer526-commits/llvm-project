@@ -19,4 +19,3 @@ void registerMemoryAccessOpInterfacesExternalModels(DialectRegistry &registry);
 } // namespace mlir
 
 #endif // MLIR_DIALECT_NVGPU_MEMORYACCESSOPINTERFACESIMPL_H
-

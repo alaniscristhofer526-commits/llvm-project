@@ -67,9 +67,9 @@ struct DeviceAsyncCopyOpInterface final
     return cast<DeviceAsyncCopyOp>(op).getDstIndices();
   }
 
-  void setMemrefsAndIndices(Operation *op, RewriterBase &rewriter,
-                            Value newSrc, ValueRange newSrcIndices,
-                            Value newDst, ValueRange newDstIndices) const {
+  void setMemrefsAndIndices(Operation *op, RewriterBase &rewriter, Value newSrc,
+                            ValueRange newSrcIndices, Value newDst,
+                            ValueRange newDstIndices) const {
     auto copyOp = cast<DeviceAsyncCopyOp>(op);
     rewriter.modifyOpInPlace(copyOp, [&]() {
       copyOp.getSrcMutable().assign(newSrc);
@@ -88,4 +88,3 @@ void mlir::nvgpu::registerMemoryAccessOpInterfacesExternalModels(
     DeviceAsyncCopyOp::attachInterface<DeviceAsyncCopyOpInterface>(*ctx);
   });
 }
-
