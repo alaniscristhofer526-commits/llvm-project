@@ -97,7 +97,6 @@ protected:
   bool EnableSIScheduler = false;
   bool EnableDS128 = false;
   bool EnablePRTStrictNull = false;
-  bool DumpCode = false;
   bool AssemblerPermissiveWavesize = false;
 
   // Subtarget statically properties set by tablegen
@@ -543,10 +542,6 @@ public:
   /// Number of hazard wait states for s_setreg_b32/s_setreg_imm32_b32.
   unsigned getSetRegWaitStates() const {
     return getGeneration() <= SEA_ISLANDS ? 1 : 2;
-  }
-
-  bool dumpCode() const {
-    return DumpCode;
   }
 
   /// Return the amount of LDS that can be used that will not restrict the
