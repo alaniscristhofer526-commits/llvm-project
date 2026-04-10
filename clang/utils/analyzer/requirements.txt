@@ -4,3 +4,7 @@ matplotlib
 pandas>=1.0.4
 psutil>=5.6.6
 seaborn
+pillow>=10.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
+fonttools>=4.43.0 # not directly required, pinned by Snyk to avoid a vulnerability
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
+numpy>=1.22.0 # not directly required, pinned by Snyk to avoid a vulnerability
